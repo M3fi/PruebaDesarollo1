@@ -1,0 +1,67 @@
+# Prueba Desarrollo - API de Usuarios
+Este proyecto es una API RESTful para la gestión de usuarios, desarrollada con Node.js, Express y MySQL.
+---
+
+## Requisitos previos
+Asegúrate de tener instalado en tu pc:
+- [Node.js] (ultima versión)
+- [MySQL]
+- [Git] 
+- [Postman] o cURL (probar la API)
+
+---
+
+## ⚙ Instalación
+1. Clona este repositorio:
+   git clone https://github.com/M3fi/PruebaDesarollo1.git
+
+2. Ingresa a el repositorio clonado:
+   cd PruebaDesarollo1
+
+3. Instala las dependencias del proyecto:
+    npm install express mysql2 dotenv cors
+
+---
+
+# Configura las variables de entorno:
+Crea un archivo .env en la raíz del proyecto y pon tus credenciales de la base de datos siguiendo el ejemplo:
+
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASS=tu_contraseña
+DB_NAME=user_api
+DB_PORT=3306
+
+---
+
+# Configura la base de datos:
+Crea la base de datos en MySQL con la tabla usuarios:
+
+CREATE DATABASE user_api;
+USE user_api;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE
+);
+
+# ▶ Ejecución
+Inicia el servidor en modo desarrollo:
+    node index.js
+
+El servidor estará corriendo en:
+    ▶ http://localhost:8080
+
+📚 Dependencias principales
+Express: Framework para construir aplicaciones web.
+MySQL2: Cliente para interactuar con bases de datos MySQL.
+Dotenv: Manejo de variables de entorno.
+Cors: Habilitación de CORS.
+
+✅ Ejemplo de flujo
+Crear usuario → POST /api/users
+Ver todos → GET /api/users
+Ver por ID → GET /api/users/id/:id
+Actualizar → PUT /api/users/:id
+Eliminar → DELETE /api/users/:id
+" { "name": "Juan", "email": "juan@test.com" } "
