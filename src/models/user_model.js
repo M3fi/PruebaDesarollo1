@@ -1,4 +1,4 @@
-import { databaseService } from "../config/database";
+import { databaseService } from "../config/database.js";
 
 export const UserModel = {
     getAllUsers: async () => {
@@ -14,17 +14,17 @@ export const UserModel = {
             'INSERT INTO users (name, email) VALUES (?, ?)',
             [userData.name, userData.email]
         );
-        return { id: result.insertId, ...userData };
+        return result.insertId;
     },
     updateUser: async (id, newUserData) => {
         await databaseService.query(
             'UPDATE users SET name = ?, email = ? WHERE id = ?',
             [newUserData.name, newUserData.email, id]
         );
-        return { id, ...newUserData };
+        return id;
     },
     deleteUser: async (id) => {
         await databaseService.query('DELETE FROM users WHERE id = ?', [id]);
-        return { message: 'User deleted successfully' };
+        return id;
     }
 } 
