@@ -10,6 +10,21 @@ export class UserController {
             response.status(500).json({ message: "Error al obtener los usuarios" });
         }
     }
+    
+    getUserById = async (request, response) => {
+        try {
+            const userId = request.params.id;
+            const user = await UserModel.getById(userId);
+            if (!user  || user.length === 0) {
+                return response.status(404).json({ message: "Usuario no encontrado" });
+            }
+            response.status(200).json(user);
+        } catch (error) {
+            console.log(error)
+            response.status(500).json({message: 'Usuario no encontrado'})
+        }
+    }
+
     createUser = async (request, response) => {
         try {
             if (!request.body || !request.body.name || !request.body.email){
